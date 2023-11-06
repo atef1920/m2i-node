@@ -25,8 +25,18 @@ ex: la pomme est rouge et la banane est jaune
  */
 
 const countWords = (sentence) => {
+  const words = sentence.split(' ');
+  const wordCount = words.reduce((count, word) => {
+    word = word.toLowerCase();
+    count[word] = (count[word] || 0) + 1;
+    return count;
+  }, {});
+  return wordCount;
 };
-console.log(countWords("la pomme est rouge et la banane est jaune"));
+
+const sentence = "la pomme est rouge et la banane est jaune";
+console.log(countWords(sentence));
+
 
 /**
 Exercice : Trier un objet par valeur
