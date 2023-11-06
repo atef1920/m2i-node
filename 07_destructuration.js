@@ -22,7 +22,6 @@ console.log(extractFirstTwo([1, 2, 3]));
  * exemple: [1, 2, 3] => [2, 3]
  */
 
-const tab = [1, 2, 3]
 const extractRest = ([premier, ...rest]) => rest;
 console.log(extractRest([1, 2, 3]));
 /**
