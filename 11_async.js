@@ -70,11 +70,30 @@ usingAwait(monCallback)
  */
 
 //décommentez la ligne suivante une fois le package installé
-//const axios = require("axios");
+const axios = require("axios");
 
 const apiResponse = async (url) => {
+    try {
+        const response = await axios.get(url);
+        return response.data;
+    } catch (error) {
+        // Gérer les erreurs, par exemple :
+        throw new Error('Erreur lors de la requête API : ' + error.message);
+    }
+};
+const testUrl = 'https://jsonplaceholder.typicode.com/todos/1';
+apiResponse(testUrl)
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
 
-}
 
 
-module.exports = {usingThen, usingAwait, apiResponse};
+
+
+
+
+    module.exports = {usingThen, usingAwait, apiResponse};
