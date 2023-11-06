@@ -15,8 +15,29 @@
 
 //const {apiResponse} = require("./11_async");
 
-const parallel = () => {
+const axios = require('axios');
+const parallel = async () => {
+    try {
+        const urls = [
+            'https://jsonplaceholder.typicode.com/todos/1',
+            'https://jsonplaceholder.typicode.com/todos/2',
+            'https://jsonplaceholder.typicode.com/todos/3'
+        ];
+        const promises = urls.map(url => axios.get(url));
+        const results = await Promise.all(promises);
+        const data = results.map(result => result.data);
+        return data;
+    } catch (error) {
+        throw error;
+    }
+};
 
-}
+parallel()
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Erreur:', error);
+    });
 
 module.exports = {parallel};

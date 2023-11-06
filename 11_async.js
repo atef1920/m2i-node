@@ -90,10 +90,4 @@ apiResponse(testUrl)
         console.error(error);
     });
 
-
-
-
-
-
-
-    module.exports = {usingThen, usingAwait, apiResponse};
+module.exports = {usingThen, usingAwait, apiResponse};
