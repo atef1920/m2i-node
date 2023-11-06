@@ -21,7 +21,9 @@ const extractFirstTwo = () => {}
  * exemple: [1, 2, 3] => [2, 3]
  */
 
-const extractRest = () => {}
+const tab = [1, 2, 3];
+const [c1, ...rest] = tab;
+console.log(rest);
 
 /**
  * utilisez la décomposition pour extraire le champ "name" de l'objet passé en paramètre
