@@ -11,8 +11,15 @@
  *    - ne pas utiliser async await
  * 
  */
+const { sleep } = require("../m2i-node/10_promise");
 const usingThen = (cb) => {
+    sleep(2000).then(() => {
+        cb();
+    });
+};
+function callback(){
 }
+usingThen(callback);
 
 /**
  * Créez une fonction asynchrone qui attend 2 seconde puis execute le callback passé en paramètre
@@ -25,9 +32,30 @@ const usingThen = (cb) => {
  *   - ne pas utiliser .then
  */
 
-const usingAwait = (cb) => {
 
+const usingAwait = async (cb) => {
+    await sleep(2000);
+    return new Promise((resolve, reject) => {
+        try {
+            cb();
+            resolve();
+        } catch (error) {
+            reject(error);
+        }
+    });
+};
+
+function monCallback() {
+    console.log("callback");
 }
+console.log("Début");
+usingAwait(monCallback)
+    .then(() => {
+        console.log("Fin");
+    })
+    .catch((error) => {
+        console.error("Erreur: " + error);
+    });
 
 /**
  * Créez une fonction asynchrone qui effectue un appel api vers l'url passé en paramètre
