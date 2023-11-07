@@ -1,4 +1,4 @@
-//const {sleep} = require("../exercices/10_promise");
+const {sleep} = require("../exercices/10_promise");
 
 /**
  * Créez une fonction synchrone qui attend 2 seconde puis execute le callback passé en paramètre
@@ -11,15 +11,9 @@
  *    - ne pas utiliser async await
  * 
  */
-const { sleep } = require("../m2i-node/10_promise");
 const usingThen = (cb) => {
-    sleep(2000).then(() => {
-        cb();
-    });
-};
-function callback(){
+    sleep().then(cb);
 }
-usingThen(callback);
 
 /**
  * Créez une fonction asynchrone qui attend 2 seconde puis execute le callback passé en paramètre
@@ -32,30 +26,10 @@ usingThen(callback);
  *   - ne pas utiliser .then
  */
 
-
 const usingAwait = async (cb) => {
-    await sleep(2000);
-    return new Promise((resolve, reject) => {
-        try {
-            cb();
-            resolve();
-        } catch (error) {
-            reject(error);
-        }
-    });
-};
-
-function monCallback() {
-    console.log("callback");
+    await sleep();
+    cb();
 }
-console.log("Début");
-usingAwait(monCallback)
-    .then(() => {
-        console.log("Fin");
-    })
-    .catch((error) => {
-        console.error("Erreur: " + error);
-    });
 
 /**
  * Créez une fonction asynchrone qui effectue un appel api vers l'url passé en paramètre
@@ -73,21 +47,8 @@ usingAwait(monCallback)
 const axios = require("axios");
 
 const apiResponse = async (url) => {
-    try {
-        const response = await axios.get(url);
-        return response.data;
-    } catch (error) {
-        // Gérer les erreurs, par exemple :
-        throw new Error('Erreur lors de la requête API : ' + error.message);
-    }
-};
-const testUrl = 'https://jsonplaceholder.typicode.com/todos/1';
-apiResponse(testUrl)
-    .then((data) => {
-        console.log(data);
-    })
-    .catch((error) => {
-        console.error(error);
-    });
+    const response = await axios.get(url);
+    return response.data;
+}
 
 module.exports = {usingThen, usingAwait, apiResponse};

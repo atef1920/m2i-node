@@ -5,8 +5,8 @@
  * Contraintes:
  *    - utiliser l'opérateur ternaire (if interdit)
  */
-const ternaire = (a , b) =>  (a > b) ? a : b;
-const reslt = ternaire(2, 5)
-console.log(reslt);
+function ternaire(a , b) {
+  return a > b ? a : b;
+}
 
 module.exports = ternaire;

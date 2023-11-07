@@ -10,7 +10,8 @@
  *    - utiliser l'opérateur ternaire (if interdit)
  */
 
+function ternaryChain(a, b) {
+    return a > b ? ">" : a < b ? "<" : "=";
+}
 
-const ternaryChain = (a, b) => (a > b) ? ">" : (a < b) ? "<" : "=";
-console.log(ternaryChain(8,4));
 module.exports = ternaryChain;

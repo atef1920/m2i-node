@@ -1,18 +1,16 @@
 
 /**
- * Déclarer une fonction fléchée qui renvoi l'argument + 1
+ * Déclarer une fonction fléchée qui renvoi le a + 1
  * Le return est explicite
  * 
  * contrainte: 
  *   - le mot clée "function" est interdis
  */
 
-const arrow1 = (x) => {
-    return x + 1;
-};
+let arrow1 = (a) => a + 1;
 
 /**
- * Déclarer une fonction fléchée qui renvoi l'argument + 1
+ * Déclarer une fonction fléchée qui renvoi le a + 1
  * Le return est implicite
  * 
  * contrainte: 
@@ -20,6 +18,6 @@ const arrow1 = (x) => {
  *   - le mot clée "return" est interdis
  */
 
-const arrow2 = x => x + 1 ;
+let arrow2 = (a) => a + 1;
 
 module.exports = {arrow1, arrow2};
